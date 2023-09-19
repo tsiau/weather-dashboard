@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const temperature = data.main.temp;
         const humidity = data.main.humidity;
         const windSpeed = data.wind.speed;
-
+    
         const weatherHTML = `
             <h2>${cityName}</h2>
             <p>Date: ${date.toDateString()}</p>
@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Humidity: ${humidity}%</p>
             <p>Wind Speed: ${windSpeed} m/s</p>
         `;
-
-        weatherInfo.innerHTML = weatherHTML;
+    
+        weatherInfo.innerHTML = weatherHTML; // This line is causing the error
         updateBackgroundImage(data.weather[0].main.toLowerCase());
-    }
+    }    
 
     cityForm.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -87,6 +87,68 @@ document.addEventListener("DOMContentLoaded", function () {
     
         document.body.style.backgroundImage = backgroundImage;
     }    
+
+    async function getForecastData(city) {
+        try {
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error("Error fetching forecast data: ", error);
+            return null;
+        }
+    }
+    
+    function displayForecast(data) {
+        const forecastList = data.list;
+        const forecastContainer = document.querySelector(".forecast");
+    
+        // Clear the previous forecast data
+        forecastContainer.innerHTML = '';
+    
+        for (let i = 0; i < forecastList.length; i += 8) {
+            const forecastItem = forecastList[i];
+            const date = new Date(forecastItem.dt * 1000);
+            const icon = forecastItem.weather[0].icon;
+            const temperature = Math.round(forecastItem.main.temp - 273.15); // Convert to Celsius
+    
+            const forecastDay = document.createElement("div");
+            forecastDay.classList.add("forecast-day");
+    
+            const dateElement = document.createElement("p");
+            dateElement.textContent = `Date: ${date.toDateString()}`;
+    
+            const iconElement = document.createElement("img");
+            iconElement.src = `https://openweathermap.org/img/w/${icon}.png`;
+            iconElement.alt = "Weather Icon";
+    
+            const temperatureElement = document.createElement("p");
+            temperatureElement.textContent = `Temperature: ${temperature}°C`;
+    
+            forecastDay.appendChild(dateElement);
+            forecastDay.appendChild(iconElement);
+            forecastDay.appendChild(temperatureElement);
+    
+            forecastContainer.appendChild(forecastDay);
+        }
+    }
+    
+    cityForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const city = cityInput.value.trim();
+        if (city) {
+            const weatherData = await getWeatherData(city);
+            const forecastData = await getForecastData(city);
+            if (weatherData && forecastData) {
+                displayWeather(weatherData);
+                displayForecast(forecastData); // Call the displayForecast function
+                let history = JSON.parse(localStorage.getItem(searchHistoryKey)) || [];
+                history.push(city);
+                localStorage.setItem(searchHistoryKey, JSON.stringify(history));
+                displaySearchHistory();
+            }
+        }
+    });
 
     // Initial display of search history
     displaySearchHistory();
