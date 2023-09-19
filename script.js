@@ -149,7 +149,77 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+// Function to hide the search history dropdown
+function hideSearchHistoryDropdown() {
+    const searchHistoryDropdown = document.getElementById("search-history-dropdown");
+    searchHistoryDropdown.style.display = "none";
+}
 
-    // Initial display of search history
-    displaySearchHistory();
+// Event listener for scroll events on the window
+window.addEventListener("scroll", function () {
+    // Get the scroll position
+    const scrollPosition = window.scrollY;
+
+    // Define the threshold at which the dropdown should be hidden
+    const threshold = 100; // Adjust this value as needed
+
+    // Check if the scroll position is below the threshold
+    if (scrollPosition > threshold) {
+        hideSearchHistoryDropdown();
+    }
+});
+
+// Function to display search history dropdown
+function displaySearchHistoryDropdown(history) {
+    const searchHistoryDropdown = document.getElementById("search-history-dropdown");
+    searchHistoryDropdown.innerHTML = '';
+
+    if (history.length > 0) {
+        for (const city of history) {
+            const searchHistoryItem = document.createElement("div");
+            searchHistoryItem.classList.add("search-history-item");
+            searchHistoryItem.textContent = city;
+            searchHistoryDropdown.appendChild(searchHistoryItem);
+
+            // Handle click on search history item
+            searchHistoryItem.addEventListener("click", async () => {
+                const weatherData = await getWeatherData(city);
+                if (weatherData) {
+                    displayWeather(weatherData);
+                }
+            });
+        }
+    }
+}
+
+// Event listener for form submission
+cityForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const city = cityInput.value.trim();
+    if (city) {
+        const weatherData = await getWeatherData(city);
+        if (weatherData) {
+            displayWeather(weatherData);
+            let history = JSON.parse(localStorage.getItem(searchHistoryKey)) || [];
+            history.push(city);
+            localStorage.setItem(searchHistoryKey, JSON.stringify(history));
+            displaySearchHistoryDropdown(history); // Update the search history dropdown
+        }
+    }
+});
+
+// Event listener for input focus (show search history dropdown)
+cityInput.addEventListener("focus", function () {
+    const history = JSON.parse(localStorage.getItem(searchHistoryKey)) || [];
+    displaySearchHistoryDropdown(history);
+});
+
+// Event listener for input blur (hide search history dropdown)
+cityInput.addEventListener("blur", function () {
+    const searchHistoryDropdown = document.getElementById("search-history-dropdown");
+    searchHistoryDropdown.style.display = "none";
+});
+
+// Initial display of search history dropdown
+displaySearchHistoryDropdown([]);
 });

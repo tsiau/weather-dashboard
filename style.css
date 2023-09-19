@@ -95,3 +95,55 @@ button:hover {
     background-color: #fff; /* White background for additional info */
     padding: 20px;
 }
+/* Style the main content layout */
+.main-content {
+    display: flex;
+    justify-content: space-between; /* Arrange left and right columns */
+}
+
+/* Left column (current weather) */
+.left-column {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Current weather information */
+.current-weather {
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Right column (5-day weather forecast) */
+.right-column {
+    flex: 1;
+    padding: 20px;
+}
+
+/* 5-day weather forecast */
+.forecast {
+    background-color: #fff; /* White background for forecast */
+    padding: 20px;
+}
+/* Style the search history dropdown */
+.search-history-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+/* Style each search history item in the dropdown */
+.search-history-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Show the dropdown when the input is focused */
+#city-input:focus + .search-history-dropdown {
+    display: block;
+}

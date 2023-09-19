@@ -10,8 +10,13 @@
     <div class="container">
         <h1>Weather Dashboard</h1>
         <form id="city-form">
-            <input type="text" id="city-input" placeholder="Enter city name">
-            <button type="submit">Search</button>
+            <div class="search-bar">
+                <input type="text" id="city-input" placeholder="Enter city name">
+                <button type="submit">Search</button>
+            </div>
+            <div class="search-history-dropdown" id="search-history-dropdown">
+                <!-- Search history will be displayed here -->
+            </div>
         </form>
         <div class="main-content">
             <div class="left-column">
