@@ -68,6 +68,8 @@ This Challenge is graded based on the following criteria:
 
 * Application GitHub URL submitted.
 
+https://github.com/tsiau/weather-dashboard
+
 * GitHub repository that contains application code.
 
 ### Application Quality: 15%
@@ -89,6 +91,14 @@ This Challenge is graded based on the following criteria:
 * Repository contains multiple descriptive commit messages.
 
 * Repository contains quality readme file with description, screenshot, and link to deployed application.
+
+Screenshots: 
+
+![Screenshot 2023-09-19 at 1 42 28 PM (2)](https://github.com/tsiau/weather-dashboard/assets/135296454/1829cd6e-2886-4859-bdb9-32a84582b083)
+
+![Screenshot 2023-09-19 at 1 42 41 PM (2)](https://github.com/tsiau/weather-dashboard/assets/135296454/d1d0e7e2-1cd2-4f5b-833a-b55cf81ea18c)
+
+![Screenshot 2023-09-19 at 1 42 57 PM (2)](https://github.com/tsiau/weather-dashboard/assets/135296454/2283838c-463f-4256-80ff-b2943143f081)
 
 ## Review
 
