@@ -78,15 +78,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateBackgroundImage(weatherCondition) {
         const backgroundImageUrls = {
-            clear: 'url("image/clear-sky.jpg")',
-            rain: 'url("image/rainy.jpg")',
-            clouds: 'url("image/cloudy.jpg")',
+            clear: 'url("images/sunny.jpeg")',
+            rain: 'url("images/raining.jpeg")',
+            clouds: 'url("images/cloudy.jpeg")',
         };
-
+    
         const backgroundImage = backgroundImageUrls[weatherCondition] || '';
-
+    
         document.body.style.backgroundImage = backgroundImage;
-    }
+    }    
 
     // Initial display of search history
     displaySearchHistory();
