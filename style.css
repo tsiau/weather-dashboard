@@ -1,0 +1,70 @@
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color or image */
+body {
+    background-color: #f0f0f0; /* Light gray */
+    background-image: url('images/city morning.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Drop shadow */
+}
+
+h1 {
+    text-align: center;
+    color: #333; /* Dark gray */
+}
+
+/* Style the form */
+#city-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#city-input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Style the weather information */
+#weather-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style the search history */
+#search-history {
+    margin-top: 20px;
+}
+
+
+
