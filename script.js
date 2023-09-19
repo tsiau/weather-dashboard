@@ -191,7 +191,6 @@ function displaySearchHistoryDropdown(history) {
         }
     }
 }
-
 // Event listener for form submission
 cityForm.addEventListener("submit", async function (e) {
     e.preventDefault();
