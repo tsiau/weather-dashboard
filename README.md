@@ -100,6 +100,10 @@ Screenshots:
 
 ![Screenshot 2023-09-19 at 1 42 57 PM (2)](https://github.com/tsiau/weather-dashboard/assets/135296454/2283838c-463f-4256-80ff-b2943143f081)
 
+Link: 
+
+https://tsiau.github.io/weather-dashboard/
+
 ## Review
 
 You are required to submit BOTH of the following for review:
